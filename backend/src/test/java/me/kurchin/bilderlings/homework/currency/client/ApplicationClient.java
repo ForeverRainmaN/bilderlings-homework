@@ -23,7 +23,7 @@ public interface ApplicationClient {
   Call<ResponseDTO<List<FeeDTO>>> getAll();
 
   @DELETE("/fees/{id}")
-  Call<ResponseDTO> feeDelete(@Path("id") int id);
+  Call<ResponseDTO> feeDelete(@Path("id") long id);
 
   @GET("/currencies/")
   Call<ResponseDTO<List<CurrencyConversionPairDTO>>> getAllPairs();

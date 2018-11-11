@@ -1,8 +1,10 @@
 package me.kurchin.bilderlings.homework.currency.api;
 
 import me.kurchin.bilderlings.homework.currency.client.ApplicationClient;
+import me.kurchin.bilderlings.homework.currency.persistance.FeeStorage;
 import org.junit.Before;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -19,6 +21,9 @@ public abstract class BaseControllerTest {
   @LocalServerPort
   private int serverPort;
 
+  @Autowired
+  private FeeStorage feeStorage;
+
   protected ApplicationClient client;
 
   @Before
@@ -29,5 +34,6 @@ public abstract class BaseControllerTest {
         .build();
 
     client = retrofit.create(ApplicationClient.class);
+    feeStorage.deleteAll();
   }
 }

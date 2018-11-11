@@ -2,17 +2,18 @@ package me.kurchin.bilderlings.homework.currency.api.dto.fee;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import me.kurchin.bilderlings.homework.currency.entities.Fee;
 
 public class FeeDTO {
 
-  private final int id;
+  private final long id;
   private final String from;
   private final String to;
   private final double fee;
 
   @JsonCreator
   public FeeDTO(
-      @JsonProperty("id") int id,
+      @JsonProperty("id") long id,
       @JsonProperty("from") String from,
       @JsonProperty("to") String to,
       @JsonProperty("fee") double fee) {
@@ -22,7 +23,11 @@ public class FeeDTO {
     this.fee = fee;
   }
 
-  public int getId() {
+  public FeeDTO(Fee fee) {
+    this(fee.getId(), fee.getFrom(), fee.getTo(), fee.getFee());
+  }
+
+  public long getId() {
     return id;
   }
 
