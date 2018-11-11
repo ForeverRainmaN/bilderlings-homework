@@ -2,6 +2,9 @@ package me.kurchin.bilderlings.homework.currency.client;
 
 import java.util.List;
 import me.kurchin.bilderlings.homework.currency.api.dto.Response.ResponseDTO;
+import me.kurchin.bilderlings.homework.currency.api.dto.currency.ConvertCurrencyDTO;
+import me.kurchin.bilderlings.homework.currency.api.dto.currency.CurrencyConversionPairDTO;
+import me.kurchin.bilderlings.homework.currency.api.dto.currency.CurrencyConversionResultDTO;
 import me.kurchin.bilderlings.homework.currency.api.dto.fee.CreateFeeDTO;
 import me.kurchin.bilderlings.homework.currency.api.dto.fee.FeeDTO;
 import retrofit2.Call;
@@ -21,4 +24,12 @@ public interface ApplicationClient {
 
   @DELETE("/fees/{id}")
   Call<ResponseDTO> feeDelete(@Path("id") int id);
+
+  @GET("/currencies/")
+  Call<ResponseDTO<List<CurrencyConversionPairDTO>>> getAllPairs();
+
+  @POST("/currencies/convert")
+  Call<ResponseDTO<CurrencyConversionResultDTO>> convert(
+      @Body ConvertCurrencyDTO convertCurrencyDTO
+  );
 }

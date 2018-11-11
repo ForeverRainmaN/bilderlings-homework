@@ -26,14 +26,15 @@ public class FeeControllerTest extends BaseControllerTest {
   @Test
   public void testDeleteFee() throws Exception {
     FeeDTO feeDTO = createFee("EUR", "USD", 0.05);
-    int id = feeDTO.getId();
-    Response<ResponseDTO> deleteFeeResponse = client
-        .feeDelete(id)
-        .execute();
 
-    ResponseDTO responseDTO = deleteFeeResponse.body();
-    assertThat(responseDTO).isNotNull();
-    assertThat(responseDTO.getStatus()).isEqualTo(Status.OK);
+    Response<ResponseDTO> response = client
+        .feeDelete(feeDTO.getId())
+        .execute();
+    assertThat(response.code()).isEqualTo(HttpStatus.OK.value());
+
+    ResponseDTO body = response.body();
+    assertThat(body).isNotNull();
+    assertThat(body.getStatus()).isEqualTo(Status.OK);
   }
 
   @Test
@@ -41,57 +42,47 @@ public class FeeControllerTest extends BaseControllerTest {
     Response<ResponseDTO<List<FeeDTO>>> response = client
         .getAll()
         .execute();
-
     assertThat(response.code()).isEqualTo(HttpStatus.OK.value());
 
-    ResponseDTO<List<FeeDTO>> responseDTO = response.body();
-
-    assertThat(responseDTO).isNotNull();
-    assertThat(responseDTO.getStatus()).isEqualTo(Status.OK);
-    assertThat(responseDTO.getResult().size()).isEqualTo(0);
+    ResponseDTO<List<FeeDTO>> body = response.body();
+    assertThat(body).isNotNull();
+    assertThat(body.getStatus()).isEqualTo(Status.OK);
+    assertThat(body.getResult().size()).isEqualTo(0);
   }
 
   @Test
   public void testGetAllFeesIfOneFeeExists() throws Exception {
     createFee("RUB", "EUR", 0.05);
+
     Response<ResponseDTO<List<FeeDTO>>> response = client
         .getAll()
         .execute();
     assertThat(response.code()).isEqualTo(HttpStatus.OK.value());
 
-    ResponseDTO<List<FeeDTO>> responseDTO = response.body();
+    ResponseDTO<List<FeeDTO>> body = response.body();
+    assertThat(body).isNotNull();
+    assertThat(body.getStatus()).isEqualTo(Status.OK);
 
-    assertThat(responseDTO).isNotNull();
-    assertThat(responseDTO.getStatus()).isEqualTo(Status.OK);
-
-    List<FeeDTO> fees = responseDTO.getResult();
-
+    List<FeeDTO> fees = body.getResult();
     assertThat(fees.size()).isEqualTo(1);
 
     FeeDTO feeDTO = fees.get(0);
-
     assertThat(feeDTO.getId()).isPositive();
     assertThat(feeDTO.getFrom()).isEqualTo("RUB");
     assertThat(feeDTO.getTo()).isEqualTo("EUR");
     assertThat(feeDTO.getFee()).isEqualTo(0.05);
   }
 
-  private FeeDTO createFee(
-      String from,
-      String to,
-      double fee
-  ) throws Exception {
+  private FeeDTO createFee(String from, String to, double fee) throws Exception {
     Response<ResponseDTO<FeeDTO>> response = client
         .feeCreate(new CreateFeeDTO(from, to, fee))
         .execute();
-
     assertThat(response.code()).isEqualTo(HttpStatus.OK.value());
 
-    ResponseDTO<FeeDTO> responseDTO = response.body();
+    ResponseDTO<FeeDTO> body = response.body();
+    assertThat(body).isNotNull();
+    assertThat(body.getStatus()).isEqualTo(Status.OK);
 
-    assertThat(responseDTO).isNotNull();
-    assertThat(responseDTO.getStatus()).isEqualTo(Status.OK);
-
-    return responseDTO.getResult();
+    return body.getResult();
   }
 }

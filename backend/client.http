@@ -25,7 +25,7 @@ Content-Type: application/json
 # Response example: {status: "OK", result: [{from: "USD", to: "EUR"}]}
 
 ###
-# Convertion from one currency to another including fee
+# Convertion from one currency to another
 POST http://localhost:8080/currencies/convert
 Accept: application/json
 Content-Type: application/json
