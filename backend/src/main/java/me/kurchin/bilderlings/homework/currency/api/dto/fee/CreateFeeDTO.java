@@ -7,13 +7,13 @@ public class CreateFeeDTO {
 
   private final String from;
   private final String to;
-  private final int fee;
+  private final double fee;
 
   @JsonCreator
   public CreateFeeDTO(
       @JsonProperty("from") String from,
       @JsonProperty("to") String to,
-      @JsonProperty("fee") int fee
+      @JsonProperty("fee") double fee
   ) {
     this.from = from;
     this.to = to;
@@ -28,7 +28,7 @@ public class CreateFeeDTO {
     return to;
   }
 
-  public int getFee() {
+  public double getFee() {
     return fee;
   }
 }
