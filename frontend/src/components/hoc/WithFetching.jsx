@@ -13,17 +13,17 @@ const WithFetching = (url) => (WrappedComponent) =>
       }
 
       async componentDidMount() {
-        this.setState((prevState, props) => {
+        this.setState(() => {
           return {
-            isLoading: !prevState.isLoading
+            isLoading: false
           }
         });
         try {
           await this.performRestApiCall(url);
         } catch (error) {
-          this.setState((prevState, props) => {
+          this.setState(() => {
             return {
-              isLoading: !prevState.isLoading,
+              isLoading: true,
               error: true
             }
           });
@@ -31,12 +31,9 @@ const WithFetching = (url) => (WrappedComponent) =>
       }
 
       performRestApiCall(url) {
-        fetch(url, {
-          method: 'GET',
-          cache: "no-store"
-        })
+        fetch(url)
         .then(result => result.json())
-        .then(data => this.setState((prevState, props) => {
+        .then(data => this.setState(prevState => {
               return {
                 feeList: [...prevState.feeList, ...data.result]
               }

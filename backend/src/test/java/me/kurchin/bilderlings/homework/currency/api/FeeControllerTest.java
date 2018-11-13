@@ -1,15 +1,12 @@
 package me.kurchin.bilderlings.homework.currency.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.catchThrowable;
 
 import java.util.List;
 import me.kurchin.bilderlings.homework.currency.api.dto.Response.ResponseDTO;
 import me.kurchin.bilderlings.homework.currency.api.dto.Status;
 import me.kurchin.bilderlings.homework.currency.api.dto.fee.CreateFeeDTO;
 import me.kurchin.bilderlings.homework.currency.api.dto.fee.FeeDTO;
-import me.kurchin.bilderlings.homework.currency.exceptions.FeeExistsException;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import retrofit2.Response;

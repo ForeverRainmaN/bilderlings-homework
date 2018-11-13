@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import {Button} from "@blueprintjs/core/lib/cjs/components/button/buttons";
-import './CurrencyPair.css';
+import { Button } from "@blueprintjs/core";
+import './Fee.css';
 
 export default function CurrencyPair({from, to, fee}) {
 

@@ -27,7 +27,7 @@ public abstract class BaseControllerTest {
   protected ApplicationClient client;
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     Retrofit retrofit = new Retrofit.Builder()
         .baseUrl("http://localhost:" + serverPort)
         .addConverterFactory(JacksonConverterFactory.create())

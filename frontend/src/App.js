@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import '../node_modules/normalize.css/normalize.css';
 import '../node_modules/@blueprintjs/core/lib/css/blueprint.css';
 import './App.css';
-import FeeEditorList from "./components/currency_pair_list/CurrencyPairList";
+import {FeeEditor} from "./components/FeeEditor/FeeEditor";
 
 class App extends Component {
   render() {
     return (
         <div className="App">
-            <FeeEditorList />
+          <FeeEditor/>
         </div>
     );
   }

@@ -1,9 +1,9 @@
 import React from 'react';
-import WithFetching from "../HOC/WithFetching";
-import './CurrencyPairList.css';
-import CurrencyPair from "../currency_pair/CurrencyPair";
+import WithFetching from "../../hoc/WithFetching";
+import CurrencyPair from "./Fee/Fee";
+import './FeeList.css';
 
-function CurrencyPairList(props) {
+function FeeList(props) {
   return (
       <div className="bilderlings-homework-currency-pair-list">
         {props.feeList.map(currencyPair =>
@@ -17,4 +17,4 @@ function CurrencyPairList(props) {
   );
 }
 
-export default WithFetching('http://localhost:8080/fees/')(CurrencyPairList);
+export default WithFetching('http://localhost:8080/fees/')(FeeList);
