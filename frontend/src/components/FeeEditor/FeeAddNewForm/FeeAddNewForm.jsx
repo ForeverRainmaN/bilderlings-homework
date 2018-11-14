@@ -17,13 +17,17 @@ export default function AddFeeForm(
   return (
       <div className="bilderlings-homework-add-fee-form">
         <select className="bliderlings-homework-select-from"
+                id="from"
                 onChange={handleFromChange}
+                value={from[0]}
         >
           {from.map(
               (element) => <option key={element}>{element}</option>)}
         </select>
         <select className="bliderlings-homework-select-to"
+                id="to"
                 onChange={handleToChange}
+                value={to[0]}
         >
           {to.map((element) => <option key={element}>{element}</option>)}
         </select>
