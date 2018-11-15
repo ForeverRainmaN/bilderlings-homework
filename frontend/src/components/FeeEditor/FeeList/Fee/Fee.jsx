@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Button } from "@blueprintjs/core";
 import './Fee.css';
 
-export default function CurrencyPair({from, to, fee, removeFee}) {
+export default function Fee({from, to, fee, removeFee}) {
   return (
       <div className="bilderlings-homework-curr-pair">
         <span>{from}</span>
@@ -18,7 +18,7 @@ export default function CurrencyPair({from, to, fee, removeFee}) {
   );
 }
 
-CurrencyPair.propTypes = {
+Fee.propTypes = {
   from: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
   fee: PropTypes.number.isRequired

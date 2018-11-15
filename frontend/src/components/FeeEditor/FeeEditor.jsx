@@ -1,12 +1,11 @@
 import React, {PureComponent} from 'react';
 import AddFeeForm from './FeeAddNewForm/FeeAddNewForm';
-import FeeListWrapper from "./FeeListWrapper/FeeListWrapper";
+import FeeList from "./FeeList/FeeList";
+import getHttpClient from "../../HttpClient/HttpClient";
 
 export class FeeEditor extends PureComponent {
   constructor(props) {
     super(props);
-    this.url = "http://localhost:8080/fees/";
-
     const from = ["USD", "EUR", "RUB"];
     const to = ["RUB", "USD", "EUR"];
     this.state = {
@@ -16,7 +15,6 @@ export class FeeEditor extends PureComponent {
       createdFee: [],
       feeList: []
     };
-
     this.handleFeeChange = this.handleFeeChange.bind(this);
     this.handleFromChange = this.handleFromChange.bind(this);
     this.handleToChange = this.handleToChange.bind(this);
@@ -26,15 +24,14 @@ export class FeeEditor extends PureComponent {
 
   async componentDidMount() {
     try {
-      await this.fetchAllFees(this.url);
+      await this.fetchAllFees();
     } catch (error) {
       console.log(error);
     }
   }
 
-  async fetchAllFees(url) {
-    fetch(url)
-    .then(result => result.json())
+  async fetchAllFees() {
+    await getHttpClient().getAll()
     .then(data => this.setState(() => {
       return {
         feeList: data.result
@@ -43,43 +40,27 @@ export class FeeEditor extends PureComponent {
   }
 
   async addFee() {
-    fetch('http://localhost:8080/fees/', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        from: this.state.from,
-        to: this.state.to,
-        fee: this.state.fee
-      })
-    })
-    .then(result => result.json())
+    const {from, to, fee} = this.state;
+    await getHttpClient().add(from, to, fee)
     .then(data => this.setState((prevState) => {
+      console.log(data);
       return {
-        feeList: [...prevState.feeList, data.result] ,
+        feeList: [...prevState.feeList, data.result],
         createdFee: data
       }
     })).catch(error => console.log(error));
   }
 
   async removeFee(id) {
-    fetch(`http://localhost:8080/fees/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-    })
-    .then(result => result.json())
+    await getHttpClient().remove(id)
     .then(() => this.setState((prevState) => {
       const {feeList} = prevState;
-      const index = feeList.indexOf(feeList.find(fee => fee.id === id));
+      const index = feeList
+      .indexOf(feeList.find(fee => fee.id === id));
       return {
         feeList: [
           ...prevState.feeList.slice(0, index),
-          ...prevState.feeList.slice(index +1)
+          ...prevState.feeList.slice(index + 1)
         ]
       }
     }));
@@ -113,7 +94,7 @@ export class FeeEditor extends PureComponent {
   }
 
   render() {
-    const {feeList} = this.state;
+    const {feeList, from, to} = this.state;
     return (
         <div className="bilderlings-homework-fee-editor">
           <AddFeeForm
@@ -122,8 +103,10 @@ export class FeeEditor extends PureComponent {
               handleToChange={this.handleToChange}
               addFee={this.addFee}
           />
-          <FeeListWrapper
+          <FeeList
               feeList={feeList}
+              from={from}
+              to={to}
               removeFee={this.removeFee}
           />
         </div>

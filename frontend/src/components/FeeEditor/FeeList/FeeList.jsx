@@ -1,17 +1,18 @@
 import React from 'react';
-import CurrencyPair from "./Fee/Fee";
+import Fee from "./Fee/Fee";
 import PropTypes from 'prop-types';
 import './FeeList.css';
 
 export default function FeeList({feeList, removeFee}) {
+  console.log(feeList);
   return (
       <div className="bilderlings-homework-currency-pair-list">
-        {feeList.map(currencyPair =>
-            <CurrencyPair key={currencyPair.id}
-                          from={currencyPair.from}
-                          to={currencyPair.to}
-                          fee={currencyPair.fee}
-                          removeFee={() => removeFee(currencyPair.id)}
+        {feeList.map(fee =>
+            <Fee key={fee.id}
+                 from={fee.from}
+                 to={fee.to}
+                 fee={fee.fee}
+                 removeFee={() => removeFee(fee.id)}
             />
         )}
       </div>

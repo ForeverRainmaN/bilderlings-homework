@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="bilderlings-homework-curr-pair"
+>
+  <span>
+    USD
+  </span>
+  <span>
+    EUR
+  </span>
+  <span>
+    0.05
+  </span>
+  <button
+    className="bp3-button bp3-intent-danger"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    type="button"
+  >
+    <span
+      className="bp3-button-text"
+    >
+      Remove
+    </span>
+  </button>
+</div>
+`;
