@@ -32,6 +32,7 @@ public class FeeController {
     this.feeService = feeService;
   }
 
+  @CrossOrigin
   @PostMapping("/")
   public ResponseDTO<FeeDTO> create(@RequestBody CreateFeeDTO createFeeDTO)
       throws FeeExistsException {
@@ -39,6 +40,7 @@ public class FeeController {
     return Response.ok(new FeeDTO(fee));
   }
 
+  @CrossOrigin
   @GetMapping("/")
   public ResponseDTO<List<FeeDTO>> getAll() {
     return Response.ok(feeService.getAll()
@@ -47,6 +49,7 @@ public class FeeController {
         .collect(Collectors.toList()));
   }
 
+  @CrossOrigin
   @DeleteMapping("/{id}")
   public ResponseDTO delete(@PathVariable("id") long id) {
     feeService.delete(id);

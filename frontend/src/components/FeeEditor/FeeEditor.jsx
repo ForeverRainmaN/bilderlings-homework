@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import AddFeeForm from './FeeAddNewForm/FeeAddNewForm';
 import FeeList from "./FeeList/FeeList";
-import getHttpClient from "../../HttpClient/HttpClient";
+import getHttpClient from "../../httpclient/HttpClient";
 
 export class FeeEditor extends PureComponent {
   constructor(props) {
@@ -11,7 +11,7 @@ export class FeeEditor extends PureComponent {
     this.state = {
       from: from[0],
       to: to[0],
-      fee: 0.00,
+      fee: '',
       createdFee: [],
       feeList: []
     };
@@ -102,6 +102,8 @@ export class FeeEditor extends PureComponent {
               handleFromChange={this.handleFromChange}
               handleToChange={this.handleToChange}
               addFee={this.addFee}
+              fromInitialValue={from}
+              toInitialValue={to}
           />
           <FeeList
               feeList={feeList}

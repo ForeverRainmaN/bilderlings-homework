@@ -7,19 +7,19 @@ export default function AddFeeForm(
       handleFeeChange,
       handleFromChange,
       handleToChange,
-      addFee
+      addFee,
+      fromInitialValue,
+      toInitialValue
     }
 ) {
-
   const from = ["USD", "EUR", "RUB"];
   const to = ["RUB", "USD", "EUR"];
-
   return (
       <div className="bilderlings-homework-add-fee-form">
         <select className="bliderlings-homework-select-from"
                 id="from"
                 onChange={handleFromChange}
-                value={from[0]}
+                defaultValue={fromInitialValue}
         >
           {from.map(
               (element) => <option key={element}>{element}</option>)}
@@ -27,7 +27,7 @@ export default function AddFeeForm(
         <select className="bliderlings-homework-select-to"
                 id="to"
                 onChange={handleToChange}
-                value={to[0]}
+                defaultValue={toInitialValue}
         >
           {to.map((element) => <option key={element}>{element}</option>)}
         </select>
