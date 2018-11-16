@@ -8,7 +8,8 @@ exports[`tests if Add fee form renders correctly 1`] = `
     className="bilderlings-homework-add-fee-form-selects"
   >
     <select
-      className="bliderlings-homework-select-from"
+      className="bliderlings-homework-select-from width70-br5-mr-30"
+      defaultValue="USD"
       id="from"
       onChange={[Function]}
     >
@@ -23,7 +24,8 @@ exports[`tests if Add fee form renders correctly 1`] = `
       </option>
     </select>
     <select
-      className="bliderlings-homework-select-to"
+      className="bliderlings-homework-select-to width70-br5-mr-30"
+      defaultValue="RUB"
       id="to"
       onChange={[Function]}
     >
@@ -39,69 +41,11 @@ exports[`tests if Add fee form renders correctly 1`] = `
     </select>
   </div>
   <input
+    className="width70-br5-mr-30"
     onChange={[Function]}
-    placeholder="fee"
   />
   <button
-    className="bp3-button bp3-intent-primary"
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    type="button"
-  >
-    <span
-      className="bp3-button-text"
-    >
-      Add
-    </span>
-  </button>
-</div>
-`;
-
-exports[`tests if fee renders correctly 1`] = `
-<div
-  className="bilderlings-homework-add-fee-form"
->
-  <div
-    className="bilderlings-homework-add-fee-form-selects"
-  >
-    <select
-      className="bliderlings-homework-select-from"
-      id="from"
-      onChange={[Function]}
-    >
-      <option>
-        USD
-      </option>
-      <option>
-        EUR
-      </option>
-      <option>
-        RUB
-      </option>
-    </select>
-    <select
-      className="bliderlings-homework-select-to"
-      id="to"
-      onChange={[Function]}
-    >
-      <option>
-        RUB
-      </option>
-      <option>
-        USD
-      </option>
-      <option>
-        EUR
-      </option>
-    </select>
-  </div>
-  <input
-    onChange={[Function]}
-    placeholder="fee"
-  />
-  <button
-    className="bp3-button bp3-intent-primary"
+    className="bp3-button bp3-intent-primary width70-br5-mr-30"
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}

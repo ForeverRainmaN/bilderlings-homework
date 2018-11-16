@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Button, Intent} from '@blueprintjs/core';
 import "./FeeAddNewForm.css";
@@ -13,7 +13,7 @@ function AddFeeFormSelects({
   const to = ["RUB", "USD", "EUR"];
   return (
       <div className="bilderlings-homework-add-fee-form-selects">
-        <select className="bliderlings-homework-select-from"
+        <select className="bliderlings-homework-select-from width70-br5-mr-30"
                 id="from"
                 onChange={handleFromChange}
                 defaultValue={fromInitialValue}
@@ -21,7 +21,7 @@ function AddFeeFormSelects({
           {from.map(
               (element) => <option key={element}>{element}</option>)}
         </select>
-        <select className="bliderlings-homework-select-to"
+        <select className="bliderlings-homework-select-to width70-br5-mr-30"
                 id="to"
                 onChange={handleToChange}
                 defaultValue={toInitialValue}
@@ -32,41 +32,72 @@ function AddFeeFormSelects({
   )
 }
 
-export default function AddFeeForm(
-    {
-      handleFeeChange,
-      handleFromChange,
-      handleToChange,
-      addFee,
-      fromInitialValue,
-      toInitialValue
-    }
-) {
-  return (
-      <div className="bilderlings-homework-add-fee-form">
-        <AddFeeFormSelects
-            handleToChange={handleToChange}
-            handleFromChange={handleFromChange}
-            fromInitialValue={fromInitialValue}
-            toInitialValue={toInitialValue}
-        />
-        <input placeholder="fee"
-               onChange={handleFeeChange}
-        >
-        </input>
-        <Button
-            intent={Intent.PRIMARY}
-            onClick={addFee}
-        >
-          Add
-        </Button>
-      </div>
-  );
+export default class AddFeeForm extends PureComponent {
+  constructor(props) {
+    const from = ["USD", "EUR", "RUB"];
+    const to = ["RUB", "USD", "EUR"];
+    super(props);
+    this.state = {
+      from: from[0],
+      to: to[0],
+      fee: 0.00,
+    };
+    this.handleFeeChange = this.handleFeeChange.bind(this);
+    this.handleFromChange = this.handleFromChange.bind(this);
+    this.handleToChange = this.handleToChange.bind(this);
+  }
+
+  handleFeeChange(e) {
+    const {value} = e.target;
+    this.setState(() => {
+      return {
+        fee: value
+      }
+    });
+  }
+
+  handleFromChange(e) {
+    const {value} = e.target;
+    this.setState(() => {
+      return {
+        from: value
+      }
+    });
+  }
+
+  handleToChange(e) {
+    const {value} = e.target;
+    this.setState(() => {
+      return {
+        to: value
+      }
+    });
+  }
+
+  render() {
+    const {from, to, fee} = this.state;
+    const {addFee} = this.props;
+    return (
+        <div className="bilderlings-homework-add-fee-form">
+          <AddFeeFormSelects
+              handleToChange={this.handleToChange}
+              handleFromChange={this.handleFromChange}
+              fromInitialValue={from}
+              toInitialValue={to}
+          />
+          <input className="width70-br5-mr-30"
+                 onChange={this.handleFeeChange}/>
+          <Button className="width70-br5-mr-30"
+                  intent={Intent.PRIMARY}
+                  onClick={() => addFee(from, to, fee)}
+          >
+            Add
+          </Button>
+        </div>
+    )
+  }
 }
 
 AddFeeForm.propTypes = {
-  handleFeeChange: PropTypes.func.isRequired,
-  handleFromChange: PropTypes.func.isRequired,
-  handleToChange: PropTypes.func.isRequired,
   addFee: PropTypes.func.isRequired
 };

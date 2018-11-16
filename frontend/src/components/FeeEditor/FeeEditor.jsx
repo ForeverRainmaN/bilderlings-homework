@@ -7,18 +7,10 @@ import './FeeEditor.css';
 export class FeeEditor extends PureComponent {
   constructor(props) {
     super(props);
-    const from = ["USD", "EUR", "RUB"];
-    const to = ["RUB", "USD", "EUR"];
     this.state = {
-      from: from[0],
-      to: to[0],
-      fee: '',
       createdFee: [],
       feeList: []
     };
-    this.handleFeeChange = this.handleFeeChange.bind(this);
-    this.handleFromChange = this.handleFromChange.bind(this);
-    this.handleToChange = this.handleToChange.bind(this);
     this.addFee = this.addFee.bind(this);
     this.removeFee = this.removeFee.bind(this);
   }
@@ -44,8 +36,7 @@ export class FeeEditor extends PureComponent {
     }
   }
 
-  async addFee() {
-    const {from, to, fee} = this.state;
+  async addFee(from, to, fee) {
     try {
       const response = await getHttpClient().add(from, to, fee);
       const data = response.result;
@@ -75,41 +66,11 @@ export class FeeEditor extends PureComponent {
     }));
   }
 
-  handleFeeChange(e) {
-    const {value} = e.target;
-    this.setState(() => {
-      return {
-        fee: value
-      }
-    });
-  }
-
-  handleFromChange(e) {
-    const {value} = e.target;
-    this.setState(() => {
-      return {
-        from: value
-      }
-    });
-  }
-
-  handleToChange(e) {
-    const {value} = e.target;
-    this.setState(() => {
-      return {
-        to: value
-      }
-    });
-  }
-
   render() {
     const {feeList, from, to} = this.state;
     return (
         <div className="bilderlings-homework-fee-editor">
           <AddFeeForm
-              handleFeeChange={this.handleFeeChange}
-              handleFromChange={this.handleFromChange}
-              handleToChange={this.handleToChange}
               addFee={this.addFee}
               fromInitialValue={from}
               toInitialValue={to}
