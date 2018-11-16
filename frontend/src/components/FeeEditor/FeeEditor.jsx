@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import AddFeeForm from './FeeAddNewForm/FeeAddNewForm';
 import FeeList from "./FeeList/FeeList";
 import getHttpClient from "../../httpclient/HttpClient";
+import {Link} from "react-router-dom";
 import './FeeEditor.css';
 
 export class FeeEditor extends PureComponent {
@@ -70,6 +71,7 @@ export class FeeEditor extends PureComponent {
     const {feeList, from, to} = this.state;
     return (
         <div className="bilderlings-homework-fee-editor">
+          <Link to="/currency-calc"> Go to currency calculator </Link>
           <AddFeeForm
               addFee={this.addFee}
               fromInitialValue={from}
@@ -85,3 +87,4 @@ export class FeeEditor extends PureComponent {
     )
   }
 }
+

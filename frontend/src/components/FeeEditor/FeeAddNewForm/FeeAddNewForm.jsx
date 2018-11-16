@@ -1,9 +1,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Button, Intent} from '@blueprintjs/core';
+import {Button, Intent, NumericInput} from '@blueprintjs/core';
 import "./FeeAddNewForm.css";
 
-function AddFeeFormSelects({
+export function CurrencySelects({
   handleFromChange,
   handleToChange,
   fromInitialValue,
@@ -12,7 +12,7 @@ function AddFeeFormSelects({
   const from = ["USD", "EUR", "RUB"];
   const to = ["RUB", "USD", "EUR"];
   return (
-      <div className="bilderlings-homework-add-fee-form-selects">
+      <div className="bilderlings-homework-add-fee-form-selects display-flex">
         <select className="bliderlings-homework-select-from width70-br5-mr-30"
                 id="from"
                 onChange={handleFromChange}
@@ -78,15 +78,19 @@ export default class AddFeeForm extends PureComponent {
     const {from, to, fee} = this.state;
     const {addFee} = this.props;
     return (
-        <div className="bilderlings-homework-add-fee-form">
-          <AddFeeFormSelects
+        <div className="bilderlings-homework-add-fee-form display-flex">
+          <CurrencySelects
               handleToChange={this.handleToChange}
               handleFromChange={this.handleFromChange}
               fromInitialValue={from}
               toInitialValue={to}
           />
-          <input className="width70-br5-mr-30"
-                 onChange={this.handleFeeChange}/>
+          <NumericInput
+              className="bilderlings-homework-amount-input width70-br5-mr-30"
+              allowNumericCharactersOnly={true}
+              buttonPosition="none"
+              onChange={this.handleFeeChange}
+          />
           <Button className="width70-br5-mr-30"
                   intent={Intent.PRIMARY}
                   onClick={() => addFee(from, to, fee)}

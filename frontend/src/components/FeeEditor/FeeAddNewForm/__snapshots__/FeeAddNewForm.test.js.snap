@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tests if Add fee form renders correctly 1`] = `
+exports[`tests if AddFeeForm renders correctly 1`] = `
 <div
-  className="bilderlings-homework-add-fee-form"
+  className="bilderlings-homework-add-fee-form display-flex"
 >
   <div
-    className="bilderlings-homework-add-fee-form-selects"
+    className="bilderlings-homework-add-fee-form-selects display-flex"
   >
     <select
       className="bliderlings-homework-select-from width70-br5-mr-30"
@@ -40,10 +40,31 @@ exports[`tests if Add fee form renders correctly 1`] = `
       </option>
     </select>
   </div>
-  <input
-    className="width70-br5-mr-30"
-    onChange={[Function]}
-  />
+  <div
+    className="bilderlings-homework-amount-input width70-br5-mr-30"
+  >
+    <div
+      className="bp3-input-group"
+    >
+      <input
+        autoComplete="off"
+        className="bp3-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onPaste={[Function]}
+        style={
+          Object {
+            "paddingRight": 10,
+          }
+        }
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
   <button
     className="bp3-button bp3-intent-primary width70-br5-mr-30"
     onClick={[Function]}

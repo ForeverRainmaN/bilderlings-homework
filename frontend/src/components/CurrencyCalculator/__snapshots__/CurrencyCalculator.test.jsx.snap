@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests if CurrencyCalculator form renders correctly 1`] = `
+<div
+  className="bilderlings-homework-curr-calc display-flex"
+>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+     Back to Fee editor 
+  </a>
+  <div
+    className="display-flex"
+  >
+    <div
+      className="bilderlings-homework-amount-input width70-br5-mr-30"
+    >
+      <div
+        className="bp3-input-group"
+      >
+        <input
+          autoComplete="off"
+          className="bp3-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onPaste={[Function]}
+          style={
+            Object {
+              "paddingRight": 10,
+            }
+          }
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="bilderlings-homework-add-fee-form-selects display-flex"
+    >
+      <select
+        className="bliderlings-homework-select-from width70-br5-mr-30"
+        defaultValue="USD"
+        id="from"
+        onChange={[Function]}
+      >
+        <option>
+          USD
+        </option>
+        <option>
+          EUR
+        </option>
+        <option>
+          RUB
+        </option>
+      </select>
+      <select
+        className="bliderlings-homework-select-to width70-br5-mr-30"
+        defaultValue="RUB"
+        id="to"
+        onChange={[Function]}
+      >
+        <option>
+          RUB
+        </option>
+        <option>
+          USD
+        </option>
+        <option>
+          EUR
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+`;
