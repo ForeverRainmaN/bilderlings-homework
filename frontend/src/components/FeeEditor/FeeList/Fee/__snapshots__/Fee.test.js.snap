@@ -28,3 +28,38 @@ exports[`renders correctly 1`] = `
   </button>
 </div>
 `;
+
+exports[`tests if fee renders correctly 1`] = `
+<div
+  className="bilderlings-homework-fee"
+>
+  <div
+    className="bilderlings-homework-fee-element"
+  >
+    USD
+  </div>
+  <div
+    className="bilderlings-homework-fee-element"
+  >
+    EUR
+  </div>
+  <div
+    className="bilderlings-homework-fee-element"
+  >
+    0.05
+  </div>
+  <button
+    className="bp3-button bp3-intent-danger"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    type="button"
+  >
+    <span
+      className="bp3-button-text"
+    >
+      Remove
+    </span>
+  </button>
+</div>
+`;

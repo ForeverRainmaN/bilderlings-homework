@@ -1,21 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tests if FeeList renders all fees that are passed via props correctly 1`] = `
+exports[`tests if FeeList renders properly tests if FeeList renders with data passed to props 1`] = `
 <div
-  className="bilderlings-homework-currency-pair-list"
+  className="bilderlings-homework-fee-list"
 >
   <div
-    className="bilderlings-homework-curr-pair"
+    className="bilderlings-homework-fee"
   >
-    <span>
+    <div
+      className="bilderlings-homework-fee-element"
+    >
       USD
-    </span>
-    <span>
+    </div>
+    <div
+      className="bilderlings-homework-fee-element"
+    >
       EUR
-    </span>
-    <span>
+    </div>
+    <div
+      className="bilderlings-homework-fee-element"
+    >
       1.25
-    </span>
+    </div>
     <button
       className="bp3-button bp3-intent-danger"
       onClick={[Function]}
@@ -31,17 +37,23 @@ exports[`tests if FeeList renders all fees that are passed via props correctly 1
     </button>
   </div>
   <div
-    className="bilderlings-homework-curr-pair"
+    className="bilderlings-homework-fee"
   >
-    <span>
+    <div
+      className="bilderlings-homework-fee-element"
+    >
       EUR
-    </span>
-    <span>
+    </div>
+    <div
+      className="bilderlings-homework-fee-element"
+    >
       RUB
-    </span>
-    <span>
+    </div>
+    <div
+      className="bilderlings-homework-fee-element"
+    >
       1.05
-    </span>
+    </div>
     <button
       className="bp3-button bp3-intent-danger"
       onClick={[Function]}
@@ -57,17 +69,23 @@ exports[`tests if FeeList renders all fees that are passed via props correctly 1
     </button>
   </div>
   <div
-    className="bilderlings-homework-curr-pair"
+    className="bilderlings-homework-fee"
   >
-    <span>
+    <div
+      className="bilderlings-homework-fee-element"
+    >
       RUB
-    </span>
-    <span>
+    </div>
+    <div
+      className="bilderlings-homework-fee-element"
+    >
       EUR
-    </span>
-    <span>
+    </div>
+    <div
+      className="bilderlings-homework-fee-element"
+    >
       1.06
-    </span>
+    </div>
     <button
       className="bp3-button bp3-intent-danger"
       onClick={[Function]}
@@ -83,4 +101,10 @@ exports[`tests if FeeList renders all fees that are passed via props correctly 1
     </button>
   </div>
 </div>
+`;
+
+exports[`tests if FeeList renders properly tests if FeeList renders without data in passed via props 1`] = `
+<div
+  className="bilderlings-homework-fee-list"
+/>
 `;

@@ -1,6 +1,5 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer';
-import {mount} from 'enzyme';
 import FeeList from './FeeList';
 
 const feeListToRender = [
@@ -24,18 +23,25 @@ const feeListToRender = [
   }
 ];
 
-it('tests if FeeList renders all fees that are passed via props correctly',
-    () => {
-      const feeList = ShallowRenderer
-      .create(<FeeList
-          feeList={feeListToRender}
-          removeFee={() => {
-          }}
-      />).toJSON();
-      expect(feeList).toMatchSnapshot();
-
-      const mountedFeeList = mount(<FeeList feeList={feeListToRender}
-                                            removeFee={() => ({})}/>);
-      const fee = mountedFeeList.find('.bilderlings-homework-curr-pair');
-      expect(fee).toHaveLength(3);
-    });
+describe('tests if FeeList renders properly', () => {
+  it('tests if FeeList renders without data in passed via props',
+      () => {
+        const feeList = ShallowRenderer
+        .create(<FeeList
+            feeList={[]}
+            removeFee={() => {
+            }}
+        />).toJSON();
+        expect(feeList).toMatchSnapshot();
+      });
+  it('tests if FeeList renders with data passed to props',
+      () => {
+        const feeList = ShallowRenderer
+        .create(<FeeList
+            feeList={feeListToRender}
+            removeFee={() => {
+            }}
+        />).toJSON();
+        expect(feeList).toMatchSnapshot();
+      });
+});
