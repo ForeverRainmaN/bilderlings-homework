@@ -2,7 +2,7 @@ import React from 'react';
 import ShallowRenderer from 'react-test-renderer';
 import Fee from './Fee';
 
-it('renders correctly', () => {
+it('tests if fee renders correctly', () => {
   const tree = ShallowRenderer
   .create(<Fee
       from="USD"

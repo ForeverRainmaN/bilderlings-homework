@@ -22,9 +22,9 @@ class HttpClient {
     }
   }
 
-  async getAll() {
+ async getAll() {
     try {
-      const response = await fetch('http://localhost:8080/fees/');
+      const response = fetch('http://localhost:8080/fees/');
       return await response.json();
     } catch (error) {
       console.log(error);

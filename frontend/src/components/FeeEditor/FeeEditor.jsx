@@ -31,24 +31,32 @@ export class FeeEditor extends PureComponent {
   }
 
   async fetchAllFees() {
-    await getHttpClient().getAll()
-    .then(data => this.setState(() => {
-      return {
-        feeList: data.result
-      }
-    })).catch(error => console.log(error));
+    try {
+      const response = await getHttpClient().getAll();
+      this.setState(() => {
+        return {
+          feeList: response.result
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async addFee() {
     const {from, to, fee} = this.state;
-    await getHttpClient().add(from, to, fee)
-    .then(data => this.setState((prevState) => {
-      console.log(data);
-      return {
-        feeList: [...prevState.feeList, data.result],
-        createdFee: data
-      }
-    })).catch(error => console.log(error));
+    try {
+      const response = await getHttpClient().add(from, to, fee);
+      const data = response.result;
+      this.setState((prevState) => {
+        return {
+          feeList: [...prevState.feeList, data],
+          createdFee: data
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async removeFee(id) {

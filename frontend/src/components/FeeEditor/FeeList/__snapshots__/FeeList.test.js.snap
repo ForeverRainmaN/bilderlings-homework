@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests if FeeList renders all fees that are passed via props correctly 1`] = `
+<div
+  className="bilderlings-homework-currency-pair-list"
+>
+  <div
+    className="bilderlings-homework-curr-pair"
+  >
+    <span>
+      USD
+    </span>
+    <span>
+      EUR
+    </span>
+    <span>
+      1.25
+    </span>
+    <button
+      className="bp3-button bp3-intent-danger"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      type="button"
+    >
+      <span
+        className="bp3-button-text"
+      >
+        Remove
+      </span>
+    </button>
+  </div>
+  <div
+    className="bilderlings-homework-curr-pair"
+  >
+    <span>
+      EUR
+    </span>
+    <span>
+      RUB
+    </span>
+    <span>
+      1.05
+    </span>
+    <button
+      className="bp3-button bp3-intent-danger"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      type="button"
+    >
+      <span
+        className="bp3-button-text"
+      >
+        Remove
+      </span>
+    </button>
+  </div>
+  <div
+    className="bilderlings-homework-curr-pair"
+  >
+    <span>
+      RUB
+    </span>
+    <span>
+      EUR
+    </span>
+    <span>
+      1.06
+    </span>
+    <button
+      className="bp3-button bp3-intent-danger"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      type="button"
+    >
+      <span
+        className="bp3-button-text"
+      >
+        Remove
+      </span>
+    </button>
+  </div>
+</div>
+`;
