@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import AddFeeForm from './FeeAddNewForm/FeeAddNewForm';
 import FeeList from "./FeeList/FeeList";
 import getHttpClient from "../../httpclient/HttpClient";
+import './FeeEditor.css';
 
 export class FeeEditor extends PureComponent {
   constructor(props) {

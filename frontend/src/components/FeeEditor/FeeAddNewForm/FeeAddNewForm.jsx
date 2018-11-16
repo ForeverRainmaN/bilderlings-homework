@@ -1,21 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Button, Intent} from '@blueprintjs/core';
+import "./FeeAddNewForm.css";
 
-export default function AddFeeForm(
-    {
-      handleFeeChange,
-      handleFromChange,
-      handleToChange,
-      addFee,
-      fromInitialValue,
-      toInitialValue
-    }
-) {
+function AddFeeFormSelects({
+  handleFromChange,
+  handleToChange,
+  fromInitialValue,
+  toInitialValue,
+}) {
   const from = ["USD", "EUR", "RUB"];
   const to = ["RUB", "USD", "EUR"];
   return (
-      <div className="bilderlings-homework-add-fee-form">
+      <div className="bilderlings-homework-add-fee-form-selects">
         <select className="bliderlings-homework-select-from"
                 id="from"
                 onChange={handleFromChange}
@@ -31,6 +28,29 @@ export default function AddFeeForm(
         >
           {to.map((element) => <option key={element}>{element}</option>)}
         </select>
+
+      </div>
+  )
+}
+
+export default function AddFeeForm(
+    {
+      handleFeeChange,
+      handleFromChange,
+      handleToChange,
+      addFee,
+      fromInitialValue,
+      toInitialValue
+    }
+) {
+  return (
+      <div className="bilderlings-homework-add-fee-form">
+        <AddFeeFormSelects
+            handleToChange={handleToChange}
+            handleFromChange={handleFromChange}
+            fromInitialValue={fromInitialValue}
+            toInitialValue={toInitialValue}
+        />
         <input placeholder="fee"
                onChange={handleFeeChange}
         >

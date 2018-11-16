@@ -6,9 +6,9 @@ import './Fee.css';
 export default function Fee({from, to, fee, removeFee}) {
   return (
       <div className="bilderlings-homework-curr-pair">
-        <span>{from}</span>
-        <span>{to}</span>
-        <span>{fee}</span>
+        <div>{from}</div>
+        <div>{to}</div>
+        <div>{fee}</div>
         <Button className="bp3-intent-danger"
                 onClick={removeFee}
         >
