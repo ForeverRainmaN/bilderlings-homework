@@ -25,13 +25,13 @@ export class FeeEditor extends PureComponent {
 
   async componentDidMount() {
     try {
-      await this.fetchAllFees();
+      await this.getAllFees();
     } catch (error) {
       console.log(error);
     }
   }
 
-  async fetchAllFees() {
+  async getAllFees() {
     try {
       const response = await getHttpClient().getAll();
       this.setState(() => {

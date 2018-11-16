@@ -1,4 +1,11 @@
-.bilderlings-homework-curr-pair {
+.bilderlings-homework-fee {
   display: flex;
   justify-content: space-between;
+}
+
+.bilderlings-homework-fee-element {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }

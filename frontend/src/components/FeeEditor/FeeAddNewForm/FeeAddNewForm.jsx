@@ -28,7 +28,6 @@ function AddFeeFormSelects({
         >
           {to.map((element) => <option key={element}>{element}</option>)}
         </select>
-
       </div>
   )
 }
@@ -59,7 +58,7 @@ export default function AddFeeForm(
             intent={Intent.PRIMARY}
             onClick={addFee}
         >
-          add
+          Add
         </Button>
       </div>
   );

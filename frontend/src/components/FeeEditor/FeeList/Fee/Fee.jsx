@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { Button } from "@blueprintjs/core";
+import {Button} from "@blueprintjs/core";
 import './Fee.css';
 
 export default function Fee({from, to, fee, removeFee}) {
   return (
-      <div className="bilderlings-homework-curr-pair">
-        <div>{from}</div>
-        <div>{to}</div>
-        <div>{fee}</div>
+      <div className="bilderlings-homework-fee">
+        <div className="bilderlings-homework-fee-element">{from}</div>
+        <div className="bilderlings-homework-fee-element">{to}</div>
+        <div className="bilderlings-homework-fee-element">{fee}</div>
         <Button className="bp3-intent-danger"
                 onClick={removeFee}
         >

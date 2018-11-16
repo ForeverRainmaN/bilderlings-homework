@@ -5,7 +5,7 @@ import './FeeList.css';
 
 export default function FeeList({feeList, removeFee}) {
   return (
-      <div className="bilderlings-homework-currency-pair-list">
+      <div className="bilderlings-homework-fee-list">
         {feeList.map(fee =>
             <Fee key={fee.id}
                  from={fee.from}
