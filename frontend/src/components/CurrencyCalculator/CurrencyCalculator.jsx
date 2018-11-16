@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
 import {NumericInput} from '@blueprintjs/core';
 import {CurrencySelects} from "../FeeEditor/FeeAddNewForm/FeeAddNewForm";
-import './CurrencyCalculator.css';
 import {Link} from "react-router-dom";
+import './CurrencyCalculator.css';
 
 export default class CurrencyCalculator extends PureComponent {
   constructor(props) {

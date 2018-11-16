@@ -1,15 +1,24 @@
 let httpClient = null;
 
+const headers = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
+};
+
+const feesUrl = 'http://localhost:8080/fees/';
+const currenciesUrl = 'http://localhost:8080/currencies/';
+
+const POST = "POST";
+const DELETE = "DELETE";
+const GET = 'GET';
+
 class HttpClient {
 
   async add(from, to, fee) {
     try {
-      const response = await fetch('http://localhost:8080/fees/', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
+      const response = await fetch(feesUrl, {
+        method: POST,
+        headers: headers,
         body: JSON.stringify({
           from: from,
           to: to,
@@ -22,9 +31,11 @@ class HttpClient {
     }
   }
 
- async getAll() {
+  async getAll() {
     try {
-      const response = await fetch('http://localhost:8080/fees/');
+      const response = await fetch(feesUrl, {
+        method: GET
+      });
       return await response.json();
     } catch (error) {
       console.log(error);
@@ -33,13 +44,36 @@ class HttpClient {
 
   async remove(id) {
     try {
-      const response = await fetch(`http://localhost:8080/fees/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
+      const response = await fetch(`${feesUrl}/${id}`, {
+        method: DELETE,
+        headers: headers
       });
+      return await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async convert(amount, from, to) {
+    try {
+      const response = await fetch(`${currenciesUrl}/convert`, {
+        method: POST,
+        headers: headers,
+        body: JSON.stringify({
+          amount: amount,
+          from: from,
+          to: to
+        })
+      });
+      return await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getCurrencies() {
+    try {
+      const response = await fetch(currenciesUrl);
       return await response.json();
     } catch (error) {
       console.log(error);
