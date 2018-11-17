@@ -1,11 +1,11 @@
 # Displays a list of all created fees
-GET http://localhost:8080/fees/
+GET http://localhost:8080/api/v1/fees/
 Content-Type: application/json
 # Response example: {status: "OK", result: [{id: 1, from: "USD", to: "EUR", fee: 0.05}]}
 
 ###
 # Creates fee
-POST http://localhost:8080/fees/
+POST http://localhost:8080/api/v1/fees/
 Accept: application/json
 Content-Type: application/json
 
@@ -14,19 +14,19 @@ Content-Type: application/json
 
 ###
 # Deletes fee
-DELETE http://localhost:8080/fees/1
+DELETE http://localhost:8080/api/v1/fees/1
 Content-Type: application/json
 # Response example: {status: "OK"}
 
 ###
 # Get all currencies
-GET http://localhost:8080/currencies/
+GET http://localhost:8080/api/v1/currencies/
 Content-Type: application/json
 # Response example: {status: "OK", result: [{from: "USD", to: "EUR"}]}
 
 ###
 # Convertion from one currency to another
-POST http://localhost:8080/currencies/convert
+POST http://localhost:8080/api/v1/convert/
 Accept: application/json
 Content-Type: application/json
 

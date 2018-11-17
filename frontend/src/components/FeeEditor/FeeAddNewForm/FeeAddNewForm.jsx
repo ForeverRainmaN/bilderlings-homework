@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import {Button, Intent, NumericInput} from '@blueprintjs/core';
 import "./FeeAddNewForm.css";
 
-
 export function CurrencySelects({
   handleFromChange,
   handleToChange,
   fromInitialValue,
   toInitialValue,
+  currencies
 }) {
-  const from = ["USD", "EUR", "RUB"];
-  const to = ["RUB", "USD", "EUR"];
   function option(e) {
     return <option key={e}>{e}</option>;
   }
+  const from = [...new Set(currencies.map(({from}) => from))];
+  const to = [...new Set(currencies.map(({to}) => to))];
   return (
       <div className="bilderlings-homework-add-fee-form-selects display-flex">
         <select className="bliderlings-homework-select-from width70-br5-mr-30"
@@ -38,11 +38,9 @@ export function CurrencySelects({
 export default class AddFeeForm extends PureComponent {
   constructor(props) {
     super(props);
-    const from = ["USD", "EUR", "RUB"];
-    const to = ["RUB", "USD", "EUR"];
     this.state = {
-      from: from[0],
-      to: to[0],
+      from: this.props.currencies[0] ? this.props.currencies[0].from : '',
+      to: this.props.currencies[0] ? this.props.currencies[0].to : '',
       fee: 0.00,
     };
     this.handleFromChange = this.handleFromChange.bind(this);
@@ -70,7 +68,8 @@ export default class AddFeeForm extends PureComponent {
 
   render() {
     const {from, to, fee} = this.state;
-    const {addFee} = this.props;
+    const {addFee, currencies} = this.props;
+    console.log(currencies);
     return (
         <div className="bilderlings-homework-add-fee-form display-flex">
           <CurrencySelects
@@ -78,6 +77,7 @@ export default class AddFeeForm extends PureComponent {
               handleFromChange={this.handleFromChange}
               fromInitialValue={from}
               toInitialValue={to}
+              currencies={currencies}
           />
           <NumericInput
               className="bilderlings-homework-amount-input width70-br5-mr-30"
@@ -98,5 +98,9 @@ export default class AddFeeForm extends PureComponent {
 }
 
 AddFeeForm.propTypes = {
-  addFee: PropTypes.func.isRequired
+  addFee: PropTypes.func.isRequired,
+  currencies: PropTypes.arrayOf(PropTypes.shape({
+    from: PropTypes.string.isRequired,
+    to: PropTypes.string.isRequired
+  })).isRequired
 };

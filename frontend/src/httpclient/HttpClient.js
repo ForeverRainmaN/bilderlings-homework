@@ -5,8 +5,9 @@ const headers = {
   'Content-Type': 'application/json'
 };
 
-const feesUrl = 'http://localhost:8080/fees/';
-const currenciesUrl = 'http://localhost:8080/currencies/';
+const feesUrl = 'http://localhost:8080/api/v1/fees/';
+const currenciesUrl = 'http://localhost:8080/api/v1/currencies/';
+const convertUrl = 'http://localhost:8080/api/v1/convert/';
 
 const POST = "POST";
 const DELETE = "DELETE";
@@ -56,7 +57,7 @@ class HttpClient {
 
   async convert(amount, from, to) {
     try {
-      const response = await fetch(`${currenciesUrl}/convert`, {
+      const response = await fetch(convertUrl, {
         method: POST,
         headers: headers,
         body: JSON.stringify({

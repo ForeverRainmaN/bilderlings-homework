@@ -9,7 +9,8 @@ export class FeeEditor extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      feeList: []
+      feeList: [],
+      currencies: []
     };
 
     this.getAllFees = this.getAllFees.bind(this);
@@ -19,6 +20,7 @@ export class FeeEditor extends PureComponent {
 
   componentDidMount() {
     this.getAllFees();
+    this.getCurrencies();
   }
 
   async getAllFees() {
@@ -26,6 +28,17 @@ export class FeeEditor extends PureComponent {
       const {result: feeList} = await getHttpClient().getAll();
       this.setState(() => {
         return {feeList}
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getCurrencies() {
+    try {
+      const {result: currencies} = await getHttpClient().getCurrencies();
+      this.setState(() => {
+        return {currencies}
       });
     } catch (error) {
       console.log(error);
@@ -61,11 +74,13 @@ export class FeeEditor extends PureComponent {
   }
 
   render() {
-    const {feeList} = this.state;
+    const {feeList, currencies} = this.state;
     return (
         <div className="bilderlings-homework-fee-editor">
           <Link to="/">Calculator</Link>
-          <AddFeeForm addFee={this.addFee}/>
+          <AddFeeForm
+              currencies={currencies}
+              addFee={this.addFee}/>
           <FeeList
               feeList={feeList}
               removeFee={this.removeFee}

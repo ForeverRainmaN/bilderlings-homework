@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
-@RequestMapping("fees")
+@RequestMapping("/api/v1/fees")
 public class FeeController {
 
   private final FeeService feeService;
