@@ -19,10 +19,12 @@ export default function FeeList({feeList, removeFee}) {
 }
 
 FeeList.propTypes = {
-  FeeList: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    from: PropTypes.string.isRequired,
-    to: PropTypes.string.isRequired,
-    fee: PropTypes.number.isRequired
-  })
+  feeList: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        from: PropTypes.string.isRequired,
+        to: PropTypes.string.isRequired,
+        fee: PropTypes.number.isRequired
+      })
+  ).isRequired
 };

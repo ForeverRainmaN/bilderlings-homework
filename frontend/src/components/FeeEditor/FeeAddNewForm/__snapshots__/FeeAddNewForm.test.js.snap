@@ -61,7 +61,7 @@ exports[`tests if AddFeeForm renders correctly 1`] = `
           }
         }
         type="text"
-        value=""
+        value="0"
       />
     </div>
   </div>

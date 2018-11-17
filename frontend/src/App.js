@@ -13,14 +13,13 @@ class App extends Component {
         <div className="App">
           <BrowserRouter>
             <Switch>
-              <Route path="/" exact component={FeeEditor}/>
-              <Route path="/currency-calc" component={CurrencyCalculator}/>
+              <Route path="/" exact component={CurrencyCalculator}/>
+              <Route path="/fees" component={FeeEditor}/>
             </Switch>
           </BrowserRouter>
         </div>
     );
   }
 }
-
 
 export default App;

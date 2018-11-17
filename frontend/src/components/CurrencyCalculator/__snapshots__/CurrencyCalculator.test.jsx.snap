@@ -5,10 +5,10 @@ exports[`tests if CurrencyCalculator form renders correctly 1`] = `
   className="bilderlings-homework-curr-calc display-flex"
 >
   <a
-    href="/"
+    href="/fees"
     onClick={[Function]}
   >
-     Back to Fee editor 
+    Fee Editor
   </a>
   <div
     className="display-flex"
@@ -34,7 +34,7 @@ exports[`tests if CurrencyCalculator form renders correctly 1`] = `
             }
           }
           type="text"
-          value=""
+          value="0"
         />
       </div>
     </div>

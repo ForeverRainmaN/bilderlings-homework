@@ -9,28 +9,23 @@ export class FeeEditor extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      createdFee: [],
       feeList: []
     };
+
+    this.getAllFees = this.getAllFees.bind(this);
     this.addFee = this.addFee.bind(this);
     this.removeFee = this.removeFee.bind(this);
   }
 
-  async componentDidMount() {
-    try {
-      await this.getAllFees();
-    } catch (error) {
-      console.log(error);
-    }
+  componentDidMount() {
+    this.getAllFees();
   }
 
   async getAllFees() {
     try {
-      const response = await getHttpClient().getAll();
+      const {result: feeList} = await getHttpClient().getAll();
       this.setState(() => {
-        return {
-          feeList: response.result
-        }
+        return {feeList}
       });
     } catch (error) {
       console.log(error);
@@ -39,12 +34,10 @@ export class FeeEditor extends PureComponent {
 
   async addFee(from, to, fee) {
     try {
-      const response = await getHttpClient().add(from, to, fee);
-      const data = response.result;
-      this.setState((prevState) => {
+      const {result: createdFee} = await getHttpClient().add(from, to, fee);
+      this.setState(({feeList}) => {
         return {
-          feeList: [...prevState.feeList, data],
-          createdFee: data
+          feeList: [...feeList, createdFee]
         }
       });
     } catch (error) {
@@ -53,34 +46,28 @@ export class FeeEditor extends PureComponent {
   }
 
   async removeFee(id) {
-    await getHttpClient().remove(id)
-    .then(() => this.setState((prevState) => {
-      const {feeList} = prevState;
-      const index = feeList
-      .indexOf(feeList.find(fee => fee.id === id));
+    await getHttpClient().remove(id);
+    this.setState(({feeList}) => {
+      const index = feeList.indexOf(
+          feeList.find(fee => fee.id === id)
+      );
       return {
         feeList: [
-          ...prevState.feeList.slice(0, index),
-          ...prevState.feeList.slice(index + 1)
+          ...feeList.slice(0, index),
+          ...feeList.slice(index + 1)
         ]
       }
-    }));
+    });
   }
 
   render() {
-    const {feeList, from, to} = this.state;
+    const {feeList} = this.state;
     return (
         <div className="bilderlings-homework-fee-editor">
-          <Link to="/currency-calc"> Go to currency calculator </Link>
-          <AddFeeForm
-              addFee={this.addFee}
-              fromInitialValue={from}
-              toInitialValue={to}
-          />
+          <Link to="/">Calculator</Link>
+          <AddFeeForm addFee={this.addFee}/>
           <FeeList
               feeList={feeList}
-              from={from}
-              to={to}
               removeFee={this.removeFee}
           />
         </div>

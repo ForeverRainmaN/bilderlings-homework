@@ -5,17 +5,42 @@ exports[`tests if App renders correctly 1`] = `
   className="App"
 >
   <div
-    className="bilderlings-homework-fee-editor"
+    className="bilderlings-homework-curr-calc display-flex"
   >
     <a
-      href="/currency-calc"
+      href="/fees"
       onClick={[Function]}
     >
-       Go to currency calculator 
+      Fee Editor
     </a>
     <div
-      className="bilderlings-homework-add-fee-form display-flex"
+      className="display-flex"
     >
+      <div
+        className="bilderlings-homework-amount-input width70-br5-mr-30"
+      >
+        <div
+          className="bp3-input-group"
+        >
+          <input
+            autoComplete="off"
+            className="bp3-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onPaste={[Function]}
+            style={
+              Object {
+                "paddingRight": 10,
+              }
+            }
+            type="text"
+            value="0"
+          />
+        </div>
+      </div>
       <div
         className="bilderlings-homework-add-fee-form-selects display-flex"
       >
@@ -52,48 +77,7 @@ exports[`tests if App renders correctly 1`] = `
           </option>
         </select>
       </div>
-      <div
-        className="bilderlings-homework-amount-input width70-br5-mr-30"
-      >
-        <div
-          className="bp3-input-group"
-        >
-          <input
-            autoComplete="off"
-            className="bp3-input"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onPaste={[Function]}
-            style={
-              Object {
-                "paddingRight": 10,
-              }
-            }
-            type="text"
-            value=""
-          />
-        </div>
-      </div>
-      <button
-        className="bp3-button bp3-intent-primary width70-br5-mr-30"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
-      >
-        <span
-          className="bp3-button-text"
-        >
-          Add
-        </span>
-      </button>
     </div>
-    <div
-      className="bilderlings-homework-fee-list"
-    />
   </div>
 </div>
 `;

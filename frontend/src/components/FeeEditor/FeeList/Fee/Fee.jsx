@@ -21,5 +21,6 @@ export default function Fee({from, to, fee, removeFee}) {
 Fee.propTypes = {
   from: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
-  fee: PropTypes.number.isRequired
+  fee: PropTypes.number.isRequired,
+  removeFee: PropTypes.func.isRequired
 };

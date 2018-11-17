@@ -14,45 +14,41 @@ export default class CurrencyCalculator extends PureComponent {
       from: from[0],
       to: to[0]
     };
-    this.handleAmountChange = this.handleAmountChange.bind(this);
     this.handleFromChange = this.handleFromChange.bind(this);
     this.handleToChange = this.handleToChange.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
   }
 
-  handleAmountChange(e) {
+  handleFromChange({target: {value: from}}) {
     this.setState(() => {
-      return {
-        amount: e.target.value
-      }
+      return {from};
     });
   }
 
-  handleFromChange(e) {
+  handleToChange({target: {value: to}}) {
     this.setState(() => {
-      return {
-        from: e.target.value
-      }
+      return {to};
     });
   }
 
-  handleToChange(e) {
+  handleAmountChange(amount) {
     this.setState(() => {
-      return {
-        to: e.target.value
-      }
+      return {amount};
     });
   }
 
   render() {
-    const {from, to} = this.state;
+    const {from, to, amount} = this.state;
     return (
-          <div className="bilderlings-homework-curr-calc display-flex">
-            <Link to="/"> Back to Fee editor </Link>
-            <div className="display-flex">
+        <div className="bilderlings-homework-curr-calc display-flex">
+          <Link to="/fees">Fee Editor</Link>
+          <div className="display-flex">
             <NumericInput
                 className="bilderlings-homework-amount-input width70-br5-mr-30"
                 allowNumericCharactersOnly={true}
                 buttonPosition="none"
+                onValueChange={this.handleAmountChange}
+                value={amount}
             />
             <CurrencySelects
                 handleFromChange={this.handleFromChange}
@@ -60,8 +56,8 @@ export default class CurrencyCalculator extends PureComponent {
                 toInitialValue={to}
                 fromInitialValue={from}
             />
-            </div>
           </div>
+        </div>
     );
   }
 }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Button, Intent, NumericInput} from '@blueprintjs/core';
 import "./FeeAddNewForm.css";
 
+
 export function CurrencySelects({
   handleFromChange,
   handleToChange,
@@ -11,6 +12,9 @@ export function CurrencySelects({
 }) {
   const from = ["USD", "EUR", "RUB"];
   const to = ["RUB", "USD", "EUR"];
+  function option(e) {
+    return <option key={e}>{e}</option>;
+  }
   return (
       <div className="bilderlings-homework-add-fee-form-selects display-flex">
         <select className="bliderlings-homework-select-from width70-br5-mr-30"
@@ -18,15 +22,14 @@ export function CurrencySelects({
                 onChange={handleFromChange}
                 defaultValue={fromInitialValue}
         >
-          {from.map(
-              (element) => <option key={element}>{element}</option>)}
+          {from.map(option)}
         </select>
         <select className="bliderlings-homework-select-to width70-br5-mr-30"
                 id="to"
                 onChange={handleToChange}
                 defaultValue={toInitialValue}
         >
-          {to.map((element) => <option key={element}>{element}</option>)}
+          {to.map(option)}
         </select>
       </div>
   )
@@ -34,43 +37,34 @@ export function CurrencySelects({
 
 export default class AddFeeForm extends PureComponent {
   constructor(props) {
+    super(props);
     const from = ["USD", "EUR", "RUB"];
     const to = ["RUB", "USD", "EUR"];
-    super(props);
     this.state = {
       from: from[0],
       to: to[0],
       fee: 0.00,
     };
-    this.handleFeeChange = this.handleFeeChange.bind(this);
     this.handleFromChange = this.handleFromChange.bind(this);
     this.handleToChange = this.handleToChange.bind(this);
+    this.handleFeeChange = this.handleFeeChange.bind(this);
   }
 
-  handleFeeChange(e) {
-    const {value} = e.target;
+  handleFromChange({target: {value: from}}) {
     this.setState(() => {
-      return {
-        fee: value
-      }
+      return {from}
     });
   }
 
-  handleFromChange(e) {
-    const {value} = e.target;
+  handleToChange({target: {value: to}}) {
     this.setState(() => {
-      return {
-        from: value
-      }
+      return {to}
     });
   }
 
-  handleToChange(e) {
-    const {value} = e.target;
+  handleFeeChange(fee) {
     this.setState(() => {
-      return {
-        to: value
-      }
+      return {fee};
     });
   }
 
@@ -89,7 +83,8 @@ export default class AddFeeForm extends PureComponent {
               className="bilderlings-homework-amount-input width70-br5-mr-30"
               allowNumericCharactersOnly={true}
               buttonPosition="none"
-              onChange={this.handleFeeChange}
+              onValueChange={this.handleFeeChange}
+              value={fee}
           />
           <Button className="width70-br5-mr-30"
                   intent={Intent.PRIMARY}
