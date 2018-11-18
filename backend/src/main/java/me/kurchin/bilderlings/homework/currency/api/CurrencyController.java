@@ -1,10 +1,12 @@
 package me.kurchin.bilderlings.homework.currency.api;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 import me.kurchin.bilderlings.homework.currency.api.dto.Response;
 import me.kurchin.bilderlings.homework.currency.api.dto.Response.ResponseDTO;
 import me.kurchin.bilderlings.homework.currency.api.dto.currency.CurrencyConversionPairDTO;
+import me.kurchin.bilderlings.homework.currency.client.fixer.FixerGetLatestRatesResponse;
 import me.kurchin.bilderlings.homework.currency.services.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

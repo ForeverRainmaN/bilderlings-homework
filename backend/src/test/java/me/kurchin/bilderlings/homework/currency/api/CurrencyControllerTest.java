@@ -20,19 +20,14 @@ public class CurrencyControllerTest extends BaseControllerTest {
    */
 
   @Test
-  public void testGetAllCurrencyPairsIfNoneExists() throws IOException {
-    List<CurrencyConversionPairDTO> conversionPais = getConversionPairs();
-
-    assertThat(conversionPais.size()).isEqualTo(0);
-  }
-
-  @Test
   public void testGetAllCurrencyPairsIfOneExits() throws IOException {
     List<CurrencyConversionPairDTO> conversion = getConversionPairs();
 
-    assertThat(conversion.size()).isEqualTo(1);
-    assertThat(conversion.get(0).getFrom()).isEqualTo("RUB");
-    assertThat(conversion.get(0).getTo()).isEqualTo("EUR");
+    assertThat(conversion.size()).isEqualTo(2);
+    assertThat(conversion.get(0).getFrom()).isEqualTo("EUR");
+    assertThat(conversion.get(0).getTo()).isEqualTo("USD");
+    assertThat(conversion.get(1).getFrom()).isEqualTo("EUR");
+    assertThat(conversion.get(1).getTo()).isEqualTo("RUB");
   }
 
   @Test

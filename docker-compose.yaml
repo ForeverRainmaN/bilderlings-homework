@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  fixer-mock:
+    image: rodolpheche/wiremock
+    ports:
+    - 9999:8080
+    command: --port 8080 --verbose
+    volumes:
+      - ./wiremock-stubs:/home/wiremock

@@ -1,0 +1,30 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/latest",
+    "queryParameters" : {
+      "access_key" : {
+        "equalTo": "mock_valid_key"
+      },
+      "base": {
+        "equalTo": "EUR"
+      },
+      "symbols": {
+        "equalTo": "USD,RUB"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "success": true,
+      "timestamp": 1542472747,
+      "base": "EUR",
+      "date": "2018-11-17",
+      "rates": {
+        "USD": 1.142054,
+        "RUB": 75.35664
+      }
+    }
+  }
+}

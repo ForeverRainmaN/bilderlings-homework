@@ -29,4 +29,9 @@ public class FeeService {
   public boolean delete(long id) {
     return feeStorage.delete(id);
   }
+
+  public double getFee(String from, String to) {
+    // TODO: 3. Get fee for currency pair
+    return 0.0;
+  }
 }

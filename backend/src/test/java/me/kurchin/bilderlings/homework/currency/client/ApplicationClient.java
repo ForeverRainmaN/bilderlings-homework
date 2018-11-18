@@ -16,19 +16,19 @@ import retrofit2.http.Path;
 
 public interface ApplicationClient {
 
-  @POST("/fees/")
+  @POST("/api/v1/fees/")
   Call<ResponseDTO<FeeDTO>> feeCreate(@Body CreateFeeDTO createFeeDTO);
 
-  @GET("/fees/")
+  @GET("/api/v1/fees/")
   Call<ResponseDTO<List<FeeDTO>>> getAll();
 
-  @DELETE("/fees/{id}")
+  @DELETE("/api/v1/fees/{id}")
   Call<ResponseDTO> feeDelete(@Path("id") long id);
 
-  @GET("/currencies/")
+  @GET("/api/v1/currencies/")
   Call<ResponseDTO<List<CurrencyConversionPairDTO>>> getAllPairs();
 
-  @POST("/currencies/convert")
+  @POST("/api/v1/convert/")
   Call<ResponseDTO<CurrencyConversionResultDTO>> convert(
       @Body ConvertCurrencyDTO convertCurrencyDTO
   );
