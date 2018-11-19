@@ -1,10 +1,14 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer';
+import renderer from 'react-test-renderer';
 import AddFeeForm from "./FeeAddNewForm";
 
 it('tests if AddFeeForm renders correctly', () => {
-  const addFeeForm = ShallowRenderer
+  const addFeeForm = renderer
   .create(<AddFeeForm
+      currencies={[
+        {from: 'EUR', to: 'USD'},
+        {from: 'EUR', to: 'RUB'},
+      ]}
       addFee={() => {
       }}
   />).toJSON();

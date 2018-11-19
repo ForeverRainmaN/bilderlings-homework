@@ -1,13 +1,13 @@
 import React from "react";
 import App from "./App";
-import TestRenderer from "react-test-renderer";
+import renderer from "react-test-renderer";
 import {MemoryRouter} from "react-router-dom";
 
 it('tests if App renders correctly', () => {
-  const addFeeForm = TestRenderer
+  const addFeeForm = renderer
   .create(
       <MemoryRouter>
-        <App />
+        <App/>
       </MemoryRouter>).toJSON();
   expect(addFeeForm).toMatchSnapshot();
 });

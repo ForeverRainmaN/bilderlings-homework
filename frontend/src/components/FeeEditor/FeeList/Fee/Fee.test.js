@@ -1,14 +1,15 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer';
+import renderer from 'react-test-renderer';
 import Fee from './Fee';
 
 it('tests if fee renders correctly', () => {
-  const fee = ShallowRenderer
+  const fee = renderer
   .create(<Fee
       from="USD"
       to="EUR"
       fee={0.05}
-      removeFee={() => {}}
+      removeFee={() => {
+      }}
   />).toJSON();
   expect(fee).toMatchSnapshot();
 });

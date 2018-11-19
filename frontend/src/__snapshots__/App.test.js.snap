@@ -44,39 +44,30 @@ exports[`tests if App renders correctly 1`] = `
       <div
         className="bilderlings-homework-add-fee-form-selects display-flex"
       >
-        <select
-          className="bliderlings-homework-select-from width70-br5-mr-30"
-          defaultValue="USD"
-          id="from"
-          onChange={[Function]}
+        <div
+          className="bp3-select"
         >
-          <option>
-            USD
-          </option>
-          <option>
-            EUR
-          </option>
-          <option>
-            RUB
-          </option>
-        </select>
-        <select
-          className="bliderlings-homework-select-to width70-br5-mr-30"
-          defaultValue="RUB"
-          id="to"
-          onChange={[Function]}
+          <select
+            id="from"
+            onChange={[Function]}
+          />
+        </div>
+        <div
+          className="bp3-select"
         >
-          <option>
-            RUB
-          </option>
-          <option>
-            USD
-          </option>
-          <option>
-            EUR
-          </option>
-        </select>
+          <select
+            id="to"
+            onChange={[Function]}
+          />
+        </div>
       </div>
+    </div>
+    <div
+      className="bilderlings-homework-converted-amount"
+    >
+      <h1>
+        0.00
+      </h1>
     </div>
   </div>
 </div>

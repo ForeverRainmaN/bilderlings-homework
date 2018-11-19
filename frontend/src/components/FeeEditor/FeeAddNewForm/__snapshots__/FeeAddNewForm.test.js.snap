@@ -7,41 +7,38 @@ exports[`tests if AddFeeForm renders correctly 1`] = `
   <div
     className="bilderlings-homework-add-fee-form-selects display-flex"
   >
-    <select
-      className="bliderlings-homework-select-from width70-br5-mr-30"
-      defaultValue="USD"
-      id="from"
-      onChange={[Function]}
+    <div
+      className="bp3-select"
     >
-      <option>
-        USD
-      </option>
-      <option>
-        EUR
-      </option>
-      <option>
-        RUB
-      </option>
-    </select>
-    <select
-      className="bliderlings-homework-select-to width70-br5-mr-30"
-      defaultValue="RUB"
-      id="to"
-      onChange={[Function]}
+      <select
+        defaultValue="EUR"
+        id="from"
+        onChange={[Function]}
+      >
+        <option>
+          EUR
+        </option>
+      </select>
+    </div>
+    <div
+      className="bp3-select"
     >
-      <option>
-        RUB
-      </option>
-      <option>
-        USD
-      </option>
-      <option>
-        EUR
-      </option>
-    </select>
+      <select
+        defaultValue="USD"
+        id="to"
+        onChange={[Function]}
+      >
+        <option>
+          USD
+        </option>
+        <option>
+          RUB
+        </option>
+      </select>
+    </div>
   </div>
   <div
-    className="bilderlings-homework-amount-input width70-br5-mr-30"
+    className="bilderlings-homework-amount-input width70-br5-mr-30 ml-30"
   >
     <div
       className="bp3-input-group"
@@ -49,6 +46,7 @@ exports[`tests if AddFeeForm renders correctly 1`] = `
       <input
         autoComplete="off"
         className="bp3-input"
+        name="createFeeInput"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -66,7 +64,7 @@ exports[`tests if AddFeeForm renders correctly 1`] = `
     </div>
   </div>
   <button
-    className="bp3-button bp3-intent-primary width70-br5-mr-30"
+    className="bp3-button bp3-intent-primary"
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}

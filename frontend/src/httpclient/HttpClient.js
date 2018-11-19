@@ -1,9 +1,4 @@
-let httpClient = null;
-
-const headers = {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json'
-};
+import {showError} from '../util/notification';
 
 const feesUrl = 'http://localhost:8080/api/v1/fees/';
 const currenciesUrl = 'http://localhost:8080/api/v1/currencies/';
@@ -11,76 +6,77 @@ const convertUrl = 'http://localhost:8080/api/v1/convert/';
 
 const POST = "POST";
 const DELETE = "DELETE";
-const GET = 'GET';
+
+async function apiRequest(url, {body, ...options} = {}) {
+  try {
+    const response = await fetch(url, {
+      ...options,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: body ? JSON.stringify(body) : undefined
+    });
+
+    if (!response.ok) {
+      const responseText = await response.text();
+      throw new Error("Request failed: [" + responseText + "]")
+    }
+
+    return response;
+  } catch (e) {
+    showError(`API Request failed: ${e.message}`);
+  }
+}
 
 class HttpClient {
 
   async add(from, to, fee) {
-    try {
-      const response = await fetch(feesUrl, {
-        method: POST,
-        headers: headers,
-        body: JSON.stringify({
-          from: from,
-          to: to,
-          fee: fee
-        })
-      });
-      return await response.json();
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await apiRequest(feesUrl, {
+      method: POST,
+      body: {
+        from: from,
+        to: to,
+        fee: fee
+      }
+    });
+    return await response.json();
+
   }
 
   async getAll() {
-    try {
-      const response = await fetch(feesUrl, {
-        method: GET
-      });
-      return await response.json();
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await apiRequest(feesUrl);
+    return await response.json();
+
   }
 
   async remove(id) {
-    try {
-      const response = await fetch(`${feesUrl}/${id}`, {
-        method: DELETE,
-        headers: headers
-      });
-      return await response.json();
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await apiRequest(`${feesUrl}/${id}`, {
+      method: DELETE
+    });
+    return await response.json();
+
   }
 
   async convert(amount, from, to) {
-    try {
-      const response = await fetch(convertUrl, {
-        method: POST,
-        headers: headers,
-        body: JSON.stringify({
-          amount: amount,
-          from: from,
-          to: to
-        })
-      });
-      return await response.json();
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await apiRequest(convertUrl, {
+      method: POST,
+      body: {
+        amount: amount,
+        from: from,
+        to: to
+      }
+    });
+    return await response.json();
   }
 
   async getCurrencies() {
-    try {
-      const response = await fetch(currenciesUrl);
-      return await response.json();
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await apiRequest(currenciesUrl);
+    return await response.json();
   }
 }
+
+let httpClient = null;
 
 export default function getHttpClient() {
   if (httpClient === null) {

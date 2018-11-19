@@ -3,8 +3,6 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {FeeEditor} from "./components/FeeEditor/FeeEditor";
 import CurrencyCalculator
   from "./components/CurrencyCalculator/CurrencyCalculator";
-import '../node_modules/normalize.css/normalize.css';
-import '../node_modules/@blueprintjs/core/lib/css/blueprint.css';
 import './App.css';
 
 class App extends Component {

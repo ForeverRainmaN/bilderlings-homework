@@ -1,5 +1,6 @@
 import React from "react";
 import propTypes from 'prop-types';
+import './CurrencySelect.css';
 
 export default function CurrencySelect({
   handleFromChange,
@@ -14,20 +15,24 @@ export default function CurrencySelect({
   const to = [...new Set(currencies.map(({to}) => to))];
   return (
       <div className="bilderlings-homework-add-fee-form-selects display-flex">
-        <select className="bliderlings-homework-select-from width70-br5-mr-30"
-                id="from"
-                onChange={handleFromChange}
-                defaultValue={from[0]}
-        >
-          {from.map(option)}
-        </select>
-        <select className="bliderlings-homework-select-to width70-br5-mr-30"
-                id="to"
-                onChange={handleToChange}
-                defaultValue={to[0]}
-        >
-          {to.map(option)}
-        </select>
+        <div className="bp3-select">
+          <select
+                  id="from"
+                  onChange={handleFromChange}
+                  defaultValue={from[0]}
+          >
+            {from.map(option)}
+          </select>
+        </div>
+        <div className="bp3-select">
+          <select
+                  id="to"
+                  onChange={handleToChange}
+                  defaultValue={to[0]}
+          >
+            {to.map(option)}
+          </select>
+        </div>
       </div>
   )
 }

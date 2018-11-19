@@ -1,9 +1,9 @@
 import React, {PureComponent} from 'react';
+import {Link} from "react-router-dom";
 import {NumericInput} from '@blueprintjs/core';
 import CurrencySelect from "../CurrencySelect/CurrencySelect"
-import {Link} from "react-router-dom";
-import './CurrencyCalculator.css';
 import getHttpClient from "../../httpclient/HttpClient";
+import './CurrencyCalculator.css';
 
 export default class CurrencyCalculator extends PureComponent {
 
@@ -87,7 +87,10 @@ export default class CurrencyCalculator extends PureComponent {
                 handleToChange={this.handleToChange}
                 currencies={currencies}
             />
-            {convertedAmount}
+
+          </div>
+          <div className="bilderlings-homework-converted-amount">
+            <h1>{convertedAmount.toFixed(2)}</h1>
           </div>
         </div>
     );

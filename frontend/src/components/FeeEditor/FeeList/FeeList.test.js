@@ -1,5 +1,5 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer';
+import renderer from 'react-test-renderer';
 import FeeList from './FeeList';
 
 const feeListToRender = [
@@ -26,7 +26,7 @@ const feeListToRender = [
 describe('tests if FeeList renders properly', () => {
   it('tests if FeeList renders without data in passed via props',
       () => {
-        const feeList = ShallowRenderer
+        const feeList = renderer
         .create(<FeeList
             feeList={[]}
             removeFee={() => {
@@ -36,7 +36,7 @@ describe('tests if FeeList renders properly', () => {
       });
   it('tests if FeeList renders with data passed to props',
       () => {
-        const feeList = ShallowRenderer
+        const feeList = renderer
         .create(<FeeList
             feeList={feeListToRender}
             removeFee={() => {

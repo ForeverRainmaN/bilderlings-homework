@@ -60,14 +60,14 @@ export default class AddFeeForm extends PureComponent {
               currencies={currencies}
           />
           <NumericInput
-              className="bilderlings-homework-amount-input width70-br5-mr-30"
+              className="bilderlings-homework-amount-input width70-br5-mr-30 ml-30"
               allowNumericCharactersOnly={true}
               buttonPosition="none"
               onValueChange={this.handleFeeChange}
               name="createFeeInput"
               value={fee}
           />
-          <Button className="width70-br5-mr-30"
+          <Button className=""
                   intent={Intent.PRIMARY}
                   onClick={() => addFee(from, to, fee)}
           >
