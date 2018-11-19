@@ -1,4 +1,5 @@
 currency-converter:
+  defaultFee: 0.05
   fixer:
     host: http://127.0.0.1:9999
     accessKey: mock_valid_key

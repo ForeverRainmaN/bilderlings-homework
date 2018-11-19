@@ -1,6 +1,7 @@
 package me.kurchin.bilderlings.homework.currency.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.within;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,10 +15,6 @@ import org.springframework.http.HttpStatus;
 import retrofit2.Response;
 
 public class CurrencyControllerTest extends BaseControllerTest {
-  /*
-    - Convert provided currency with default fee
-    - Convert currency with non-default fee
-   */
 
   @Test
   public void testGetAllCurrencyPairsIfOneExits() throws IOException {
@@ -31,14 +28,12 @@ public class CurrencyControllerTest extends BaseControllerTest {
   }
 
   @Test
-  public void testCovertProvidedCurrencyPairWithNonDefaultFee() throws IOException {
+  public void testCovertProvidedCurrencyPairWithDefaultFee() throws IOException {
     ConvertCurrencyDTO convertCurrencyDTO = new ConvertCurrencyDTO(
         100,
-        "USD",
-        "RUB"
+        "EUR",
+        "USD"
     );
-
-    // get appropriate fee
 
     Response<ResponseDTO<CurrencyConversionResultDTO>> response = client
         .convert(convertCurrencyDTO)
@@ -51,7 +46,7 @@ public class CurrencyControllerTest extends BaseControllerTest {
     assertThat(body).isNotNull();
 
     double conversionResult = body.getResult().getAmount();
-    assertThat(conversionResult).isEqualTo(100.0);
+    assertThat(conversionResult).isEqualTo(109.205, within(0.01));
   }
 
   private List<CurrencyConversionPairDTO> getConversionPairs() throws IOException {

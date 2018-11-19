@@ -31,7 +31,6 @@ public class FeeService {
   }
 
   public double getFee(String from, String to) {
-    // TODO: 3. Get fee for currency pair
-    return 0.0;
+    return feeStorage.getFee(from, to);
   }
 }

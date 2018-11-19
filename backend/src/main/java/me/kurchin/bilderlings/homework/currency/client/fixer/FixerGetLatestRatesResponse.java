@@ -2,7 +2,7 @@ package me.kurchin.bilderlings.homework.currency.client.fixer;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -11,16 +11,16 @@ public class FixerGetLatestRatesResponse {
   private final boolean success;
   private final long timestamp;
   private final String base;
-  private final Date date;
+  private final String date;
   private final Map<String, Double> rates;
 
   @JsonCreator
   public FixerGetLatestRatesResponse(
-      boolean success,
-      long timestamp,
-      String base,
-      Date date,
-      Map<String, Double> rates) {
+      @JsonProperty("success") boolean success,
+      @JsonProperty("timestamp") long timestamp,
+      @JsonProperty("base") String base,
+      @JsonProperty("date") String date,
+      @JsonProperty("rates") Map<String, Double> rates) {
     this.success = success;
     this.timestamp = timestamp;
     this.base = base;
@@ -40,7 +40,7 @@ public class FixerGetLatestRatesResponse {
     return base;
   }
 
-  public Date getDate() {
+  public String getDate() {
     return date;
   }
 

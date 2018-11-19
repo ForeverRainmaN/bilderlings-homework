@@ -30,7 +30,7 @@ export class FeeEditor extends PureComponent {
         return {feeList}
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -41,7 +41,7 @@ export class FeeEditor extends PureComponent {
         return {currencies}
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -54,7 +54,7 @@ export class FeeEditor extends PureComponent {
         }
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 

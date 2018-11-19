@@ -1,3 +1,4 @@
+// Refactoring HttpClient into something like this...
 function apiFetch(url, {body, ...options}) {
   return fetch(url, {
     ...options,
