@@ -1,18 +1,11 @@
 version: '3'
 
 services:
-  fixer-mock:
-    image: rodolpheche/wiremock
-    ports:
-    - 9999:8080
-    command: --port 8080 --verbose
-    volumes:
-    - ./wiremock-stubs:/home/wiremock
-
   backend:
     build: backend/
     environment:
-      FIXER_HOST: http://fixer-mock:8080
+      FIXER_HOST: http://data.fixer.io
+      FIXER_ACCESS_KEY: ${FIXER_ACCESS_KEY}
     ports:
     - "8080:8080"
 

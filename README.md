@@ -7,8 +7,27 @@ as well as lots of my ideas on overall improvement.
 
 ## Quickstart
 
+You will need access key for [Fixer](https://fixer.io) API.
+
+Create `.env` file in the root directory (follow `.env.example` as an example).
+
+Run application:
+
 ```
 docker-compose up
+```
+
+Open [localhost:3000](http://localhost:3000).
+
+## Run in development mode
+
+To run application in development mode, one can use `./docker-compose.dev.yaml`.
+It uses mocked version of Fixer API.
+
+Run:
+
+```
+docker-compose -f docker-compose.dev.yaml up
 ```
 
 ## Run tests

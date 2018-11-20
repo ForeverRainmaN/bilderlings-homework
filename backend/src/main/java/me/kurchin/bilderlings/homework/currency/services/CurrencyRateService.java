@@ -1,10 +1,7 @@
 package me.kurchin.bilderlings.homework.currency.services;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import me.kurchin.bilderlings.homework.currency.client.FixerClient;
@@ -13,7 +10,6 @@ import me.kurchin.bilderlings.homework.currency.configuration.CurrencyConverterC
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import retrofit2.Response;
 
 @Service
@@ -21,7 +17,6 @@ public class CurrencyRateService {
 
   private CurrencyConverterConfiguration currencyConverterConfiguration;
   private FixerClient fixerClient;
-  private Map<String, Double> cachedRates;
   private List<FixerGetLatestRatesResponse> rates;
 
   @Autowired

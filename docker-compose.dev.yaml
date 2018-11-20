@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  fixer-mock:
+    image: rodolpheche/wiremock
+    ports:
+    - 9999:8080
+    command: --port 8080 --verbose
+    volumes:
+    - ./wiremock-stubs:/home/wiremock
+
+  backend:
+    build: backend/
+    environment:
+      FIXER_HOST: http://fixer-mock:8080
+    ports:
+    - "8080:8080"
+
+  frontend:
+    build: frontend/
+    ports:
+    - "3000:80"

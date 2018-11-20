@@ -2,7 +2,7 @@ currency-converter:
   defaultFee: 0.05
   fixer:
     host: ${FIXER_HOST:http://127.0.0.1:9999}
-    accessKey: mock_valid_key
+    accessKey: ${FIXER_ACCESS_KEY:mock_valid_key}
   currencies:
   - from: EUR
     to:
